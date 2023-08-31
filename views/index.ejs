@@ -1,0 +1,18 @@
+<h1>My Blog</h1>
+<h3 style="display: inline-block;">Blog content created by AI at </h3>
+<a href="https://poe.com/" target="_blank" class="AI-link">poe.com</a>
+<div class="many-blogs-container">
+    <% data.forEach(blog=> { %>
+        <div class="blog">
+            <div class="blog-title">
+                <a href="/blog/<%= blog.id %>" class="blog-title-link"><%= blog.title %></a>
+                <p class="title-date"><%= moment(blog.createdAt).format('Do MMMM, YYYY') %></p>
+            </div>
+            <div class="blog-author"><%= blog.author %></div>
+            <div class="blog-content-preview">
+                <%= blog.preview %>
+                <a href="/blog/<%= blog.id %>" class="read-more">Read more ...</a>
+            </div>
+        </div>
+        <% }) %>
+</div>
