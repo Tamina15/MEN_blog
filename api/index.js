@@ -12,23 +12,23 @@ const connectDB = require('../config/db');
 connectDB();
 
 // setting
-app.set('layout', './layouts/main');
+app.set('layout', '../layouts/main');
 app.set('view engine', 'ejs');
 
 // middleware
 app.use(express.static('public'));
 app.use(express_layout);
 
-// app.use('/', require('../routes/index.route'));
+app.use('/', require('../routes/index.route'));
 app.use('/user', require('../routes/user.route'));
 app.use('/blog', require('../routes/blog.route'));
 app.get('/test', function (req, res) {
   res.send({ status: 500 }, "testing index");
 })
-app.get('/', function (req, res) {
-  res.send("hello")
-    ;
-})
+// app.get('/', function (req, res) {
+//   res.send("hello")
+//     ;
+// })
 // routing
 
 
