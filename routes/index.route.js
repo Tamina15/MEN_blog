@@ -10,10 +10,10 @@ const User = require('../model/User');
 
 
 // routing
-// router.get('/', GetIndexPage);
-router.get('/', function(req, res){
-    res.render('index');
-});
+router.get('/', GetIndexPage);
+// router.get('/', function(req, res){
+//     res.render('index');
+// });
 
 
 // router.get('/login', Login);
