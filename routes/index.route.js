@@ -11,19 +11,14 @@ const User = require('../model/User');
 
 // routing
 router.get('/', GetIndexPage);
-// router.get('/', function(req, res){
-//     res.render('index');
-// });
 
+router.get('/login', Login);
 
-// router.get('/login', Login);
-
-// router.get('/register', Register);
+router.get('/register', Register);
 
 router.get('/test', function (req, res) {
     res.send('Testing Index');
 })
-
 
 
 // AddField();
