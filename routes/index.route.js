@@ -21,7 +21,7 @@ router.get('/', GetIndexPage);
 // router.get('/register', Register);
 
 router.get('/test', function (req, res) {
-    res.send('Testing');
+    res.send('Testing Index');
 })
 
 

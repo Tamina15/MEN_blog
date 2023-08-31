@@ -12,7 +12,7 @@ router.get('/login', Login);
 router.get('/register', Register);
 
 router.get('/test', function (req, res) {
-    res.send('Testing');
+    res.send('Testing User');
 })
 
 module.exports = router;
