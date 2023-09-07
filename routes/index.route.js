@@ -2,23 +2,23 @@ require('dotenv').config();
 const express = require('express');
 // const app = express();
 const router = express.Router();
-const { GetIndexPage } = require('../controllers/index.controller');
-const { Login, Register } = require('../controllers/user.controller');
+const { GetIndexPage, Search, SetSession } = require('../controllers/index.controller');
 const Blog = require('../model/Blog');
 const User = require('../model/User');
 
 
-
+router.use(SetSession);
 // routing
 router.get('/', GetIndexPage);
 
-router.get('/login', Login);
+router.post('/search', Search);
 
-router.get('/register', Register);
 
 router.get('/test', function (req, res) {
     res.send('Testing Index');
 })
+
+
 
 
 // AddField();
