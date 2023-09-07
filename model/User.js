@@ -24,6 +24,10 @@ const userFields = {
     },
     token: {
         type: String,
+        default: null,
+    },
+    blogs: {
+        type: Array,
         default:null,
     },
     createdAt: {
