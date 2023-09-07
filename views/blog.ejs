@@ -3,88 +3,19 @@
         <h4 class="blog-title"><%= blog.title %></h4>
         <div class="blog-author"><%= blog.author %></div>
         <div class="blog-content">
-            <%- blog.content %>
-            <!-- <p class="blog-paragraph">In a world that values innovation and originality, cultivating creativity has become
-                more important than ever. Whether you're an artist, writer, entrepreneur, or simply someone looking to
-                infuse more imagination into your daily life, tapping into your inner genius can lead to fulfilling and
-                impactful experiences. In this blog post, we will explore strategies and techniques to nurture and
-                unleash
-                your creative potential.
+            <p class="blog-paragraph">
+                <%= blog.content %>
             </p>
-            <p class="blog-paragraph">
-                Embrace Curiosity:
-                Creativity thrives on curiosity. Cultivate a sense of wonder and a thirst for knowledge. Explore new
-                subjects, ask questions, and challenge conventional wisdom. By embracing curiosity, you open yourself up
-                to
-                new perspectives and ideas that can fuel your creative endeavors.
-            </p >
-            <p class="blog-paragraph">
-                Create a Stimulating Environment:
-                Your physical and mental environment plays a crucial role in nurturing creativity. Surround yourself
-                with
-                inspiring books, artwork, and objects that ignite your imagination. Designate a dedicated space for your
-                creative pursuits, free from distractions. Experiment with different lighting, colors, and sounds to
-                find
-                what stimulates your mind and enhances your creative flow.
-            </p>
-            <p class="blog-paragraph">
-                Cultivate a Growth Mindset:
-                Believe in your ability to grow and develop creatively. Embrace failures and setbacks as opportunities
-                for
-                learning and growth. Adopt a growth mindset that focuses on progress rather than perfection. Recognize
-                that
-                creativity is a journey, and each step forward, no matter how small, brings you closer to your creative
-                potential.
-            </p>
-            <p class="blog-paragraph">
-                Engage in Divergent Thinking:
-                Divergent thinking is a key component of creative problem-solving. Practice brainstorming techniques
-                such as
-                mind mapping or freewriting to generate a multitude of ideas. Allow yourself to think outside the box
-                and
-                explore unconventional solutions. Embrace ambiguity and explore different perspectives to uncover unique
-                and
-                innovative approaches.
-            </p>
-            <p class="blog-paragraph">
-                Embrace Solitude and Reflection:
-                In our fast-paced, connected world, carving out time for solitude and reflection is essential for
-                creative
-                growth. Disconnect from technology and take regular breaks to give your mind the space it needs to
-                wander
-                and make unexpected connections. Engage in activities like meditation, journaling, or nature walks to
-                foster
-                introspection and tap into your inner creative reservoir.
-            </p>
-            <p class="blog-paragraph">
-                Seek Inspiration from Diverse Sources:
-                Expand your horizons by exposing yourself to diverse sources of inspiration. Explore different art
-                forms,
-                cultures, and disciplines. Attend exhibitions, read books from various genres, listen to podcasts, and
-                engage in conversations with people from different backgrounds. The more diverse your sources of
-                inspiration, the richer and more unique your creative output can become.
-            </p>
-            <p class="blog-paragraph">
-                Embrace Collaboration and Feedback:
-                Creativity thrives in a collaborative environment. Seek out fellow creatives, join communities, and
-                engage
-                in constructive discussions. Share your work-in-progress and welcome feedback. Collaboration not only
-                expands your creative network but also exposes you to different perspectives and approaches that can
-                elevate
-                your own work.
-            </p>
-            <p class="blog-paragraph">
-                Conclusion:
-                Cultivating creativity is a lifelong journey that requires dedication, curiosity, and a willingness to
-                explore the unknown. By embracing curiosity, creating a stimulating environment, adopting a growth
-                mindset,
-                engaging in divergent thinking, seeking solitude, and drawing inspiration from diverse sources, you can
-                unlock your inner genius and unleash your creative potential. Remember, creativity is within all of us,
-                waiting to be awakened and expressed in ways that are uniquely our own. So go forth, embrace your
-                creative
-                spirit, and let your imagination soar.
-            </p> -->
         </div>
+    </div>
+    <h3 style="display: block; clear: both;">See other blogs:</h3>
+    <div class="blog-suggest">
+        <% newest_blog.forEach(element => { %>
+            <div class="blog-block">
+                <a class="blog-title" href="<%= element.id %>"><%= element.title %></a>
+                <div class="blog-preview"><%= element.preview %></div>
+            </div>
+        <% }) %>
     </div>
     
     </div>
