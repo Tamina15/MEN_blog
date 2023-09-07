@@ -5,14 +5,22 @@
         </a>
     </div>
     <!-- <div> -->
-    <form class="search">
-        <input type="text" name="search" id="search-input">
-        <button type="button">Search</button>
+    <form action="/search" class="search" method="POST">
+        <input type="text" name="search" id="search-input" placeholder="Search titles ..."
+            value="<%= typeof search != 'undefined' ? search : "" %>">
+        <button type="submit">Search</button>
+
     </form>
     <!-- </div> -->
     <div class="button-group">
-        <a href="/user/login" class="login">Login</a>
-        <a href="/user/logout" class="logout">Logout</a>
-        <a href="/user/register" class="register">Register</a>
+        <% if (typeof user !=="undefined" ) { %>
+            <a href="/user/<%= id %>" class="login">
+                <%= user %>
+            </a>
+            <a href="/user/logout" class="login">Logout</a>
+            <% } else { %>
+                <a href="/user/login" class="login">Login</a>
+                <a href="/user/register" class="register">Register</a>
+                <% } %>
     </div>
 </header>
