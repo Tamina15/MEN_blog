@@ -90,10 +90,10 @@ header .search input {
     max-width: 300px;
 }
 
-
-header .login,
+.button-group a {
+    /* header .login,
 header .logout,
-header .register {
+header .register { */
     margin-left: 10px;
     padding: 10px 10px;
     color: black;
@@ -162,6 +162,19 @@ header .search button:hover,
     min-height: 200px;
 }
 
+.login-form .login-fail {
+    margin: var(--auto-center);
+    color: red;
+    font-size: small;
+    text-align: center;
+}
+.login-form .register-fail {
+    margin: var(--auto-center);
+    color: red;
+    font-size: small;
+    text-align: center;
+}
+
 .login-form legend {
     margin: var(--auto-center);
     text-align: center;
@@ -176,6 +189,14 @@ header .search button:hover,
 }
 
 .login-form input {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: var(--rounding);
+}
+.login-form select{
     width: 100%;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -224,7 +245,7 @@ header .search button:hover,
     display: block;
     overflow: auto;
     flex-direction: column;
-    max-height: 800px;
+    max-height: 1200px;
 }
 
 .blog-container {
@@ -236,14 +257,17 @@ header .search button:hover,
     display: block;
     margin: 10px auto;
     padding: 10px 10px;
-    width: 800px;
+    width: auto;
+    /* max-width: 1200px; */
     border-bottom: var(--border);
 }
-.blog-title{
+
+.blog-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* margin-bottom: 10px; */
+    font-size: larger;
+    margin-bottom: 10px;
     /* height: 40px; */
 }
 
@@ -259,10 +283,12 @@ header .search button:hover,
     cursor: pointer;
     color: var(--color-150);
 }
-.blog-author{
+
+.blog-author {
     font-size: large;
     margin-bottom: 10px;
 }
+
 .read-more {
     color: blue;
 }
@@ -272,12 +298,26 @@ header .search button:hover,
     color: var(--dark-blue);
 }
 
-.blog-paragraph{
-    text-indent: 30px;
+.blog-paragraph {
+    /* text-indent: 30px; */
     /* text-justify: inter-word; */
     text-align: justify;
+    white-space: pre-line;
 }
 
 .blog-content-preview {}
 
 .blog-content {}
+
+.blog-suggest {
+    /* border-top: var(--border-thick); */
+    /* display: flex; */
+    /* flex-direction: row; */
+
+}
+
+.blog-block {
+    /* display: inline-block; */
+    /* max-width: 400px; */
+    margin: 20px auto;
+}
