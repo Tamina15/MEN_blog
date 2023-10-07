@@ -11,8 +11,8 @@ async function GetIndexPage(req, res) {
         // console.log(random);
         const data = await Blog.find();
         const datas = [title, moment, data];
-        //res.render('index', { title, moment, data });
-        res.json({"message":"alive"});
+        res.render('index', { title, moment, data });
+        //res.json({"message":"alive"});
     } catch (error) {
         console.log(error);
     }
