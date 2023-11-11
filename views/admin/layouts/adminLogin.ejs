@@ -6,26 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/6e4a985b33.js" crossorigin="anonymous"></script>
     <title><%= (typeof title != "undefined" ? title : "My Blog")%></title>
-
-    <link rel="stylesheet" href="/css/index.css">
-    <% if (typeof css !='undefined' ) { %>
-
-    <% css.forEach(function(cssFile) { %>
-        <link rel="stylesheet" href="/css/<%= cssFile %>">
-      <% }); %>
-      <% } %>
-
+    <link rel="stylesheet" href="/css/admin/adminLogin.css">
 </head>
 
 <body>
-    <%- include('../components/header.component.ejs') %>
         <main>
 
             <%- body %>
 
         </main>
-    <%- include('../components/footer.component.ejs') %>
 
-</body>
+</body> 
 
 </html>

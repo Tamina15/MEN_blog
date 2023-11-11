@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= (typeof title !="undefined" ? title : "My Blog" )%>
+    </title>
+    <script src="https://kit.fontawesome.com/6e4a985b33.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <% if (typeof css !='undefined' ) { %>
+        <% css.forEach(function(cssFile) { %>
+            <link rel="stylesheet" href="/css/admin/<%= cssFile %>">
+            <% }); %>
+                <% } %>
+</head>
+
+<body>
+    <%- include('../components/adminHeader.component.ejs') %>
+
+        <form action="/admin/dashboard/search" id="search-form" class="search" method="POST">
+            <input type="hidden" name="searchType" id="searchType" value="<%= typeof searchType != 'undefined' ? searchType :"" %>">
+            <input type="text" name="search" id="searchInput" placeholder="Search <%= typeof searchType != 'undefined' ? searchType :"" %> ..." value="<%= typeof search != 'undefined' ? search : "" %>">
+            <button type="submit">Search</button>
+
+        </form>
+        <main id="content">
+
+            <%- body %>
+
+        </main>
+        <%- include('../components/footer.component.ejs') %>
+
+</body>
+<script>
+    document.getElementById('search-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form data
+        // const id = document.getElementById('id').value;
+        var formData = {
+            searchType : document.getElementById('searchType').value,
+            search : document.getElementById('searchInput').value,
+        };
+
+        const url = '/admin/dashboard/search'; // Replace with your API endpoint
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error: ' + response.status);
+                }
+                return response.text();
+                // return response.json();
+                // window.location.href = '/admin/dashboard';
+            }).then(updatedContent => {
+                try {
+                    const data = JSON.parse(updatedContent);
+                    if(data.statusCode == 1){
+                        window.location.href = '/admin/dashboard/blogs?statusCode=1';
+                    }
+                } catch (error) {
+                    document.getElementById('content').innerHTML = updatedContent;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Display an error message
+            });
+    });
+</script>
+</html>

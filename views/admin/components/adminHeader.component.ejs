@@ -1,0 +1,27 @@
+<header>
+    <div class="navbar">
+        <a href="/admin/dashboard/blogs" active>Blogs</a>
+        <a href="/admin/dashboard/users">Users</a>
+        <a href="/admin/dashboard/admins">Admins</a>
+        <a href="/admin/dashboard/statistics">Statistic</a>
+        <a href="/admin/dashboard/others">Others</a>
+    </div>
+    <!-- <div> -->
+    <!-- <form action="/search" class="search" method="POST">
+        <input type="text" name="search" id="search-input" placeholder="Search titles ..."
+            value="<%= typeof search != 'undefined' ? search : "" %>">
+        <button type="submit">Search</button>
+
+    </form> -->
+    <!-- </div> -->
+    <div class="button-group">
+        <% if (typeof adminId !=="undefined" ) { %>
+            <!-- <a href="/admin/user/<%= adminId %>" class="login"> -->
+            <a href="#" class="login">
+                <%= adminName %>
+            </a>
+            <a href="/admin/logout" class="login">Logout</a>
+            <% }%>
+
+    </div>
+</header>

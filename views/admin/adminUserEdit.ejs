@@ -1,0 +1,91 @@
+<form action="#" class="edit-blog-form" method="POSt" id="user-update-form">
+    <legend> Edit User</legend>
+    <% if (typeof message !='undefined' ) { %>
+        <div>
+            <%= message %>
+        </div>
+        <% } %>
+                <div>
+                    <label for="id">ID</label>
+                    <input type="text" id="id" name="id" disabled value="<%= user.id %>">
+                </div>
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" value="<%= user.username %>">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" value="<%= user.email %>">
+                </div>
+                <div>
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender">
+                        <% if (user.gender) { %>
+                            <option value='male' selected>Male</option>
+                            <option value='female'>Female</option>
+
+                            <% } else { %>
+                                <option value='male'>Male</option>
+                                <option value='female' selected>Female</option>
+                                <% } %>
+                    </select>
+                </div>
+                <div>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" name="phone" pattern="0[1-9]{2}[0-9]{7}" value="<%= user.phone %>">
+                </div>
+                <div>
+                    <label for="age"> Age </label>
+                    <input type="tel" name="age" pattern="[1-9]{1}[1-9]{0,2}" value="<%= user.age %>">
+                </div>
+
+
+                <div style="text-align: center;">
+                    <button disabled type="submit">Edit</button>
+                </div>
+</form>
+<script>
+    // document.getElementById('user-update-form').addEventListener('submit', function (event) {
+    //     event.preventDefault(); // Prevent form submission
+
+    //     // Get form data
+    //     const id = document.getElementById('id').value;
+    //     var formData = {
+    //         title: document.getElementById('title').value,
+    //         content: document.getElementById('blog-content').value,
+    //         authorID: document.getElementById('authorID').value,
+    //         preview: document.getElementById('preview').value
+    //     };
+
+    //     const url = '/admin/dashboard/blogs/' + id; // Replace with your API endpoint
+
+    //     fetch(url, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(formData)
+    //     })
+    //         .then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error('Error: ' + response.status);
+    //             }
+    //             return response.text();
+    //             // return response.json();
+    //             // window.location.href = '/admin/dashboard';
+    //         }).then(updatedContent => {
+    //             try {
+    //                 const data = JSON.parse(updatedContent);
+    //                 if (data.statusCode == 1) {
+    //                     window.location.href = '/admin/dashboard/blogs?statusCode=1';
+    //                 }
+    //             } catch (error) {
+    //                 document.getElementById('content').innerHTML = updatedContent;
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error('Error:', error);
+    //             // Display an error message
+    //         });
+    // });
+</script>

@@ -4,20 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= (typeof title != "undefined" ? title : "My Blog") %></title>
+    <title>
+        <%= (typeof title !="undefined" ? title : "My Blog" ) %>
+    </title>
+    <script src="https://kit.fontawesome.com/6e4a985b33.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/index.css">
+    <% if (typeof css !='undefined' ) { %>
+
+        <% css.forEach(function(cssFile) { %>
+            <link rel="stylesheet" href="/css/<%= cssFile %>">
+            <% }); %>
+                <% } %>
+
 </head>
 
 <body>
-        <main>
-            <button onclick="history.back()" class="back-button">
-                <img src="../image/back.png" alt="back arrow">
-                Back
-            </button>
-            
-            <%- body %>
+    <main>
+        <button onclick="history.back()" class="back-button">
+            <img src="../image/back.png" alt="back arrow">
+            Back
+        </button>
 
-        </main>
+        <%- body %>
+
+    </main>
     <%- include('../components/footer.component.ejs') %>
 
 </body>

@@ -10,7 +10,7 @@ const blogFields = {
         required: true,
     },
     authorID: {
-        type: Object,
+        type: Schema.Types.ObjectId,
         required: true,
     },
     author: {
@@ -19,7 +19,6 @@ const blogFields = {
     preview: {
         type: String,
     },
-    
     createdAt: {
         type: Date,
         default: Date.now(),

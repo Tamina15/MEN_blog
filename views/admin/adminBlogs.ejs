@@ -1,0 +1,52 @@
+<div class="many-blogs-container">
+    <% if (typeof blogs !='undefined' ) { %>
+        <% blogs.forEach(blog=> { %>
+            <div class="blog">
+                <div class="blog-title-container">
+                    <div class="blog-title">
+                        <%= blog.title %>
+                            <div class="blog-author">
+                                <i>
+                                    <%= blog.author %>
+                                </i>
+                            </div>
+                    </div>
+                    <div class="blog-edit-button-group">
+                        <a class="blog-icon blog-icon-update" href="/admin/dashboard/blogs/<%= blog.id %>"
+                            onmouseenter="Toogle('gear_<%= blog.id %>', 'fa-spin')"
+                            onmouseleave="Toogle('gear_<%= blog.id %>', 'fa-spin')">
+                            <i id="gear_<%= blog.id %>" class="fa-solid fa-gear fa-lg"></i>
+                        </a>
+                        <form action="./blogs/delete" method="POST">
+                            <input type="hidden" name="id" hidden value="<%= blog.id %>">
+                            <button class="blog-icon blog-icon-delete" type="submit">
+                                <i id="x_<%= blog.id %>" class="fa-solid fa-xmark fa-2xl"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+                <% }%>
+</div>
+
+<script>
+    function Toogle(id, style) {
+        var element = document.getElementById(id);
+        element.classList.toggle(style);
+    }
+    function Alert() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const statusCode = urlParams.get('statusCode');
+        if (statusCode == 1)
+            alert("Blog Update Success");
+        const message = urlParams.get('message');
+        if (message != null) {
+            alert(message);
+        }
+    }
+    window.onload = function () {
+        Alert();
+    }
+
+</script>

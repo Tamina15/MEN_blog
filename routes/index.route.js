@@ -2,14 +2,14 @@ require('dotenv').config();
 const express = require('express');
 // const app = express();
 const router = express.Router();
-const { GetIndexPage, Search, SetSession } = require('../controllers/index.controller');
-const Blog = require('../model/Blog');
-const User = require('../model/User');
+const { GetIndexPage, Search, GetNewBlog } = require('../controllers/index.controller');
+const { SetUserSession, CheckLoggedIn } = require('../utils');
 
-
-router.use(SetSession);
+router.use(SetUserSession);
 // routing
 router.get('/', GetIndexPage);
+
+router.get('/new', GetNewBlog);
 
 router.post('/search', Search);
 
@@ -21,6 +21,8 @@ router.get('/test', function (req, res) {
 
 
 
+// const Blog = require('../model/Blog');
+// const User = require('../model/User');
 // AddField();
 // function InsertBlog() {
 //     Blog.insertMany([
@@ -96,7 +98,5 @@ router.get('/test', function (req, res) {
 //     ]);
 // }
 // InsertBlog();
-
-
 
 module.exports = router;

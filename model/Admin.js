@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const userFields = {
+const adminFields = {
     username: {
         type: String,
         required: true,
@@ -26,13 +26,13 @@ const userFields = {
         type: String,
         default: null,
     },
-    blogs: {
-        type: Array,
-        default: null,
+    authorization: {
+        type: Number,
+        default: 1,
     },
-    isBlock: {
-        type:Boolean,
-        default:false,
+    isLogin: {
+        type: Boolean,
+        default: false,
     },
     createdAt: {
         type: Date,
@@ -43,5 +43,5 @@ const userFields = {
         default: Date.now(),
     }
 }
-const UserSchema = new Schema(userFields);
-module.exports = mongoose.model('User', UserSchema);
+const AdminSchema = new Schema(adminFields);
+module.exports = mongoose.model('Admin', AdminSchema);

@@ -1,0 +1,83 @@
+<form action="/admin/dashboard/blogs" class="edit-blog-form" method="POSt" id="blog-update-form">
+    <legend> Edit Blog</legend>
+    <% if (typeof message !='undefined' ) { %>
+        <div>
+            <%= message %>
+        </div>
+        <% } %>
+            <input type=hidden name=_method value=DELETE>
+            <div>
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id" disabled value="<%= blog.id %>">
+            </div>
+            <div>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="<%= blog.title %>">
+            </div>
+            <div>
+                <label for="content">Content</label>
+                <!-- <input type="text" name="content"> -->
+                <textarea name="content" id="blog-content" cols="100" rows="30">
+            <%= blog.content %>
+        </textarea>
+            </div>
+            <div>
+                <label for="authorID">AuthorID</label>
+                <input type="text" id="authorID" name="authorID" disabled value="<%= blog.authorID %>">
+            </div>
+            <div>
+                <label for="preview">Preview</label>
+                <!-- <input type="text" name="preview"> -->
+                <textarea name="preview" id="preview" cols="30" rows="10">
+            <%= blog.preview %>
+        </textarea>
+            </div>
+            <div style="text-align: center;">
+                <button type="submit">Edit</button>
+            </div>
+</form>
+<script>
+    document.getElementById('blog-update-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form data
+        const id = document.getElementById('id').value;
+        var formData = {
+            title: document.getElementById('title').value,
+            content: document.getElementById('blog-content').value,
+            authorID: document.getElementById('authorID').value,
+            preview: document.getElementById('preview').value
+        };
+
+        const url = '/admin/dashboard/blogs/' + id; // Replace with your API endpoint
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error: ' + response.status);
+                }
+                return response.text();
+                // return response.json();
+                // window.location.href = '/admin/dashboard';
+            }).then(updatedContent => {
+                try {
+                    const data = JSON.parse(updatedContent);
+                    if(data.statusCode == 1){
+                        window.location.href = '/admin/dashboard/blogs?statusCode=1';
+                    }
+                } catch (error) {
+                    document.getElementById('content').innerHTML = updatedContent;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Display an error message
+            });
+    });
+</script>

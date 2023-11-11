@@ -1,5 +1,6 @@
 * {
     font-family: 'Quicksand', sans-serif;
+    box-sizing: border-box;
 }
 
 :root {
@@ -8,7 +9,7 @@
     --dark-blue: rgb(0, 0, 150);
     --color-150: rgb(150, 150, 150);
     --auto-center: 0px auto;
-    --max-width: 1000px;
+    --max-width: 1200px;
     --rounding: 10px;
     --border: solid black 1px;
     --border-thick: solid black 2px;
@@ -17,7 +18,7 @@
 
 html {
     margin: 0px;
-    padding: 10px;
+    padding: 0px;
     height: 100%;
     width: 100%;
 }
@@ -34,6 +35,7 @@ main {
     padding: 0px 20px;
     max-width: var(--max-width);
     overflow: hidden;
+    height: fit-content;
 }
 
 header {
@@ -46,6 +48,7 @@ header {
     max-width: var(--max-width);
     background-color: var(--light-blue);
     border-radius: var(--rounding);
+    width: 100%;
 }
 
 header div {
@@ -73,22 +76,6 @@ header .button-group {
     /* margin-left: auto; */
 }
 
-header .search {
-    display: flex;
-    margin: var(--auto-center);
-    max-width: 400px;
-    width: 100%;
-}
-
-header .search input {
-    display: inline-block;
-    padding: 10px 10px;
-    margin-right: 10px;
-    /* border-radius: var(--rounding); */
-    width: 100%;
-    min-width: 100px;
-    max-width: 300px;
-}
 
 .button-group a {
     /* header .login,
@@ -103,6 +90,8 @@ header .register { */
     font-size: larger;
     background-color: beige;
     text-align: center;
+    transition: background-color 0.5s;
+
 }
 
 header .logout {
@@ -127,197 +116,67 @@ footer p {
     margin-bottom: 2px;
 }
 
+header .search {
+    display: flex;
+    margin: var(--auto-center);
+    max-width: 400px;
+    width: 100%;
+}
 
-header .search button,
-.back-button {
+header .search input {
+    display: inline-block;
+    padding: 10px 10px;
+    margin-right: 10px;
+    /* border-radius: var(--rounding); */
+    width: 100%;
+    min-width: 100px;
+    max-width: 300px;
+}
+header .search button {
     width: 100px;
     height: 50px;
     font-size: larger;
     background-color: beige;
     text-align: center;
     border-radius: var(--rounding);
+    transition: background-color 0.5s;
+
 }
 
-header .search button:hover,
-.back-button:hover {
+header .search button:hover {
     cursor: pointer;
     background-color: var(--darker-beige);
 }
 
-.back-button img {
-    width: 10px;
-    height: 10px;
-    margin: auto 0px;
-}
-
-.login-form {
-    display: block;
-    margin: var(--auto-center);
-    border: var(--border);
-    border-radius: var(--rounding);
-    padding: 20px 20px;
-    width: 400px;
-    height: auto;
-    min-width: 200px;
-    min-height: 200px;
-}
-
-.login-form .login-fail {
-    margin: var(--auto-center);
-    color: red;
-    font-size: small;
-    text-align: center;
-}
-.login-form .register-fail {
-    margin: var(--auto-center);
-    color: red;
-    font-size: small;
-    text-align: center;
-}
-
-.login-form legend {
-    margin: var(--auto-center);
-    text-align: center;
-    font-size: 40px;
-    margin-bottom: 30px;
-}
-
-.login-form label {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.login-form input {
-    width: 100%;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    padding: 10px 10px;
-    box-sizing: border-box;
-    border-radius: var(--rounding);
-}
-.login-form select{
-    width: 100%;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    padding: 10px 10px;
-    box-sizing: border-box;
-    border-radius: var(--rounding);
-}
-
-.login-form a:hover {
-    color: var(--dark-blue);
-}
-
-.login-form button {
-    padding: 10px;
-    margin-top: 20px;
-    border: var(--border-thick);
-    border-radius: var(--rounding);
-    width: 100%;
-    font-size: large;
-    color: white;
-    background-color: green;
-}
-
-.login-form button:hover {
-    background-color: darkgreen;
-    cursor: pointer;
-}
-
-.AI-link {
-    font-size: 1.17em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-
-    color: black;
-}
-
-.AI-link:hover {
-    cursor: pointer;
-    color: var(--color-150);
-}
-
-.many-blogs-container {
-    display: block;
-    overflow: auto;
-    flex-direction: column;
-    max-height: 1200px;
-}
-
-.blog-container {
-    display: block;
-    /* overflow: hidden; */
-}
-
-.blog {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 10px;
-    width: auto;
-    /* max-width: 1200px; */
-    border-bottom: var(--border);
-}
-
-.blog-title {
+ .search {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin: var(--auto-center);
+    max-width: 400px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+ .search input {
+    display: inline-block;
+    padding: 10px 10px;
+    margin-right: 10px;
+    border-radius: var(--rounding);
+    width: 100%;
+    min-width: 100px;
+    max-width: 300px;
+}
+ .search button {
+    width: 100px;
+    height: 50px;
     font-size: larger;
-    margin-bottom: 10px;
-    /* height: 40px; */
+    background-color: beige;
+    text-align: center;
+    border-radius: var(--rounding);
+    transition: background-color 0.5s;
+
 }
 
-.blog-title-link {
-    display: block;
-    font-size: larger;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-}
-
-.blog-title-link:hover {
+ .search button:hover {
     cursor: pointer;
-    color: var(--color-150);
-}
-
-.blog-author {
-    font-size: large;
-    margin-bottom: 10px;
-}
-
-.read-more {
-    color: blue;
-}
-
-.read-more:hover {
-    cursor: pointer;
-    color: var(--dark-blue);
-}
-
-.blog-paragraph {
-    /* text-indent: 30px; */
-    /* text-justify: inter-word; */
-    text-align: justify;
-    white-space: pre-line;
-}
-
-.blog-content-preview {}
-
-.blog-content {}
-
-.blog-suggest {
-    /* border-top: var(--border-thick); */
-    /* display: flex; */
-    /* flex-direction: row; */
-
-}
-
-.blog-block {
-    /* display: inline-block; */
-    /* max-width: 400px; */
-    margin: 20px auto;
+    background-color: var(--darker-beige);
 }

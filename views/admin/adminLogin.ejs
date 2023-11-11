@@ -1,0 +1,36 @@
+<form action="/admin" class="login-form" method="POST">
+    <legend>Login</legend>
+    <% if (typeof message !='undefined' ) { %>
+        <% if (message==0) { %>
+            <div class="login-fail">
+                Please Fill In All Fields
+            </div>
+            <% } %>
+                <% if (message==-1 || message==-2) { %>
+                    <div class="login-fail">
+                        Email or Password Incorrect
+                    </div>
+                    <% } %>
+                        <% if (message==-3) { %>
+                            <div class="login-fail">
+                                Account Already Log In
+                            </div>
+                            <% } %>
+                            <% if (message==-4) { %>
+                                <div class="login-fail">
+                                    Log In Failed. Please Try Agian Later.
+                                </div>
+                                <% } %>
+                                <% } %>
+                                    <div>
+                                        <label for="email">Email</label>
+                                        <input type="text" name="email">
+                                    </div>
+                                    <div>
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password">
+                                    </div>
+                                    <div>
+                                        <button type="submit">Log In</button>
+                                    </div>
+</form>

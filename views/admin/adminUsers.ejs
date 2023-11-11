@@ -1,0 +1,90 @@
+<% if (typeof users=='undefined' ) { %>
+   <script>
+      window.location.href('/admin/dashboard');
+   </script>
+   <% } %>
+      <div class="many-users-container">
+         <% users.forEach(user=> { %>
+            <div class="user">
+               <div class="user-info-container">
+                  <div class="user-image">
+                     <img src="" alt="">
+                  </div>
+                  <div class="user-id">
+                     <i>
+                        <%=user.id %>
+                     </i>
+                  </div>
+                  <div class="user-name">
+                     <b>
+                        <%= user.username %>
+                     </b>
+                  </div>
+                  <div class="user-email">
+                     <a href="mailto:<%= user.email %>">
+                        <%= user.email %>
+                     </a>
+                  </div>
+                  <div class="user-blogs">
+                     <% user.blogs.forEach(blog=> { %>
+                        <a href="/admin/dashboard/blogs/<%= blog %>">
+                           <%= blog %>
+                        </a>
+                        <% }) %>
+                  </div>
+               </div>
+               <div class="user-edit-button-group">
+                  <a class="user-icon user-icon-update" href="/admin/dashboard/users/<%= user.id %>" onmouseenter="Toogle('gear_<%= user.id %>', 'fa-spin')"
+                     onmouseleave="Toogle('gear_<%= user.id %>', 'fa-spin')">
+                     <i id="gear_<%= user.id %>" class="fa-solid fa-gear fa-lg"></i>
+                   </a> 
+                  <% if (user.isBlock) { %>
+                     <form action="/admin/dashboard/users/unblock" method="POST">
+                        <input style="height: 0px; width: 0px;" type="hidden" name="id" hidden value="<%= user.id %>">
+                        <button class="user-icon user-icon-unlock" type="submit"
+                           onmouseenter="Change('unlock_<%= user.id %>', 'fa-lock', 'fa-lock-open')"
+                           onmouseleave="Change('unlock_<%= user.id %>', 'fa-lock-open', 'fa-lock')">
+                           <i id="unlock_<%= user.id %>" class="fa-solid fa-lock fa-2xl"></i>
+                        </button>
+                        <% } else { %>
+                           <form action="/admin/dashboard/users/block" method="POST">
+                              <input style="height: 0px; width: 0px;" type="hidden" name="id" hidden
+                                 value="<%= user.id %>">
+                              <button class="user-icon user-icon-lock" type="submit">
+                                 <i id="lock_<%= user.id %>" class="fa-solid fa-user-lock fa-2xl"></i>
+                              </button>
+                              <% } %>
+                           </form>
+               </div>
+            </div>
+            <!-- onmouseenter="Change('lock_<%= user.id %>', 'fa-user-lock', 'fa-lock-open')"
+      onmouseleave="Change('lock_<%= user.id %>', 'fa-lock-open', 'fa-user-lock')" -->
+            <% }) %>
+      </div>
+      <script>
+         function Toogle(id, style) {
+            var element = document.getElementById(id);
+            element.classList.toggle(style);
+         }
+         function Change(id, oldStyle, newStyle) {
+            setTimeout(() => {
+               var element = document.getElementById(id);
+               element.classList.replace(oldStyle, newStyle);
+            }, 100);
+         }
+         function Alert() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const statusCode = urlParams.get('statusCode');
+            const message = urlParams.get('message');
+            if (statusCode == 1)
+               alert("User Update Success");
+            if (message != null) {
+               alert(message);
+            }
+            window.history.replaceState(null, '', window.location.pathname);
+         }
+         window.onload = function () {
+            Alert();
+         }
+
+      </script>

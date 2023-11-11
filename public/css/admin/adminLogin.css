@@ -1,0 +1,117 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
+:root {
+    --light-green: rgb(188, 255, 217);
+    --light-blue: rgb(150, 150, 250);
+    --dark-blue: rgb(0, 0, 150);
+    --color-150: rgb(150, 150, 150);
+    --skin-tone: #d4cc9a;
+    --auto : auto auto;
+    --auto-center: 0px auto;
+    --max-width: 1000px;
+    --rounding: 10px;
+    --border: solid black 1px;
+    --border-thick: solid black 2px;
+    --darker-beige: rgb(230, 230, 200);
+}
+
+html {
+    margin: 0px;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: var(--skin-tone);
+    margin: var(--auto);
+    padding: 10px;
+    height: 100%;
+    background-image: url('../../image/janus.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+main {
+    display: flex;
+    margin: var(--auto-center);
+    padding: 0px 20px;
+    max-width: var(--max-width);
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.login-form {
+    display: block;
+    margin-top: 50px;
+    margin: auto; 
+    border: var(--border);
+    border-radius: var(--rounding);
+    padding: 20px 20px;
+    width: 400px;
+    height: auto;
+    min-width: 200px;
+    min-height: 200px;
+    text-align: left;
+    background-color: rgb(255, 255, 255, 0.3);
+}
+
+.login-form .login-fail {
+    margin: var(--auto-center);
+    color: red;
+    font-size: small;
+    text-align: center;
+}
+.login-form legend {
+    margin: var(--auto-center);
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.login-form label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.login-form input {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: var(--rounding);
+}
+
+.login-form select {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: var(--rounding);
+}
+
+.login-form a:hover {
+    color: var(--dark-blue);
+}
+
+.login-form button {
+    padding: 10px;
+    margin-top: 20px;
+    border: var(--border-thick);
+    border-radius: var(--rounding);
+    width: 100%;
+    font-size: large;
+    color: white;
+    background-color: green;
+}
+
+.login-form button:hover {
+    background-color: darkgreen;
+    cursor: pointer;
+}

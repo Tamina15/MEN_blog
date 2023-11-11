@@ -1,0 +1,95 @@
+.login-form {
+    display: block;
+    margin: var(--auto-center);
+    border: var(--border);
+    border-radius: var(--rounding);
+    padding: 20px 20px;
+    width: 400px;
+    height: auto;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+.login-form .login-fail {
+    margin: var(--auto-center);
+    color: red;
+    font-size: small;
+    text-align: center;
+}
+
+.login-form .register-fail {
+    margin: var(--auto-center);
+    color: red;
+    font-size: small;
+    text-align: center;
+}
+
+.login-form legend {
+    margin: var(--auto-center);
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.login-form label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.login-form input {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: var(--rounding);
+}
+
+.login-form select {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: var(--rounding);
+}
+
+.login-form a:hover {
+    color: var(--dark-blue);
+}
+
+.login-form button {
+    padding: 10px;
+    margin-top: 20px;
+    border: var(--border-thick);
+    border-radius: var(--rounding);
+    width: 100%;
+    font-size: large;
+    color: white;
+    background-color: green;
+}
+
+.login-form button:hover {
+    background-color: darkgreen;
+    cursor: pointer;
+}
+.back-button {
+    width: 100px;
+    height: 50px;
+    font-size: larger;
+    background-color: beige;
+    text-align: center;
+    border-radius: var(--rounding);
+    transition: background-color 0.5s;
+
+}
+.back-button:hover {
+    cursor: pointer;
+    background-color: var(--darker-beige);
+}
+.back-button img {
+    width: 10px;
+    height: 10px;
+    margin: auto 0px;
+}

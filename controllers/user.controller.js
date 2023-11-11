@@ -3,17 +3,17 @@ require('dotenv').config();
 const layout = './layouts/noheader';
 const User = require('../model/User');
 const bcrypt = require('bcrypt');
-
+const css = ['login.css'];
 function UserPage(req, res) {
     res.render('user');
 }
 
 function GetLoginPage(req, res) {
-    res.render('login', { layout })
+    res.render('login', { layout, css })
 }
 
 function GetRegisterPage(req, res) {
-    res.render('register', { layout });
+    res.render('register', { layout, css });
 }
 
 //  0  Information Error
@@ -21,15 +21,15 @@ async function Login(req, res) {
     const email = req.body.email;
     const password = req.body.password;
     if (!email || !password) {
-        return res.render('login', { layout, message: 0 });
+        return res.render('login', { layout, css, message: 0 });
     }
     const user = await User.findOne({ email })
     if (!user) {
-        return res.render('login', { layout, message: 0 });
+        return res.render('login', { layout, css, message: 0 });
     }
     const hashedPassword = await bcrypt.compare(password, user.password);
     if (!hashedPassword) {
-        return res.render('login', { layout, message: 0 });
+        return res.render('login', { layout, css, message: 0 });
     }
     req.session.user = user.username;
     req.session.id = user.id;
@@ -54,34 +54,34 @@ async function Register(req, res) {
     const password = req.body.password;
     const repeat_password = req.body.repeat_password;
     if (!username || !email || !phone || !password || !repeat_password) {
-        return res.render('register', { layout, message: 0 });
+        return res.render('register', { layout, css, message: 0 });
     }
     const user = await User.findOne({ email });
     if (user) {
-        return res.render('register', { layout, message: -1 });
+        return res.render('register', { layout, css, message: -1 });
     }
     if (password !== repeat_password) {
-        return res.render('register', { layout, message: -2 });
+        return res.render('register', { layout, css, message: -2 });
     }
     const salt = bcrypt.genSaltSync(process.env.SALT);
-    const hashedPassword =  bcrypt.hashSync(password, salt);
-    const hashedRepeatedPassword =  bcrypt.hashSync(repeat_password, salt);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+    const hashedRepeatedPassword = bcrypt.hashSync(repeat_password, salt);
     if (hashedPassword !== hashedRepeatedPassword) {
-        return res.render('register', { layout, message: -2 });
+        return res.render('register', { layout, css, message: -2 });
     }
     const gen = gender === 'male' ? true : false;
     const newUser = new User({
-        username: username, 
-        email: email, 
-        age: age, 
-        phone: phone, 
-        gender: gen, 
+        username: username,
+        email: email,
+        age: age,
+        phone: phone,
+        gender: gen,
         password: hashedPassword
     });
     console.log(newUser);
     const result = await User.create(newUser);
-    if(!result){
-        return res.render('register', { layout, message: -4 });
+    if (!result) {
+        return res.render('register', { layout, css, message: -4 });
     }
     Login(req, res);
 }
