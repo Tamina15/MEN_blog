@@ -1,5 +1,6 @@
 const Admin = require('./model/Admin');
 const Blog = require('./model/Blog');
+const jwt = require('jsonwebtoken');
 function CheckNotLoggedIn(name, redirectTo) {
     return function (req, res, next) {
         // If not logged in, continue
@@ -69,6 +70,9 @@ function Render(req, res, page, params) {
     });
 }
 
+function JWT(params) {
+    return jwt.sign(params, process.env.JWT_TOKEN_SECRET, { expiresIn: '1800s' })
+}
 
 
-module.exports = { CheckNotLoggedIn, CheckLoggedIn, SetUserSession, SetAdminSession, SetLoginFalse, Render };
+module.exports = { CheckNotLoggedIn, CheckLoggedIn, SetUserSession, SetAdminSession, SetLoginFalse, Render, JWT };

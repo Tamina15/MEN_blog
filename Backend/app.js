@@ -10,6 +10,8 @@ const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+
 const { SetLoginFalse } = require('./utils');
 
 // connect to DB

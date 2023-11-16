@@ -4,7 +4,6 @@ const moment = require('moment');
 const css = ['blog.css'];
 async function GetIndexPage(req, res) {
     try {
-
         const title = 'My Blog';
         // const search = await User.find({_id:"64f0086923f43238c6b817ca"});
         // const random = await User.aggregate([{ $sample: { size: 5 } }]).exec(); // You want to get 5 docs
@@ -16,6 +15,7 @@ async function GetIndexPage(req, res) {
         console.log(error);
     }
 }
+
 async function Search(req, res) {
     const title = "Search";
     try {
@@ -35,10 +35,12 @@ async function Search(req, res) {
     }
     // console.log(req.body);
 }
+
 function GetNewBlog(req, res) {
-const title = 'New Blog'
+    const title = 'New Blog'
     res.render('newblog', { title, css })
 }
+
 function RedirectIndex(req, res) {
     res.redirect('/');
 }
